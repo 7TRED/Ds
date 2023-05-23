@@ -1,0 +1,49 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Calculator Web App</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body class="bg-gray-100">
+		<div class="container mx-auto p-4">
+			<h1 class="text-4xl text-center mb-8">Calculator Web App</h1>
+			<form action="/calculate" method="POST" class="max-w-md mx-auto bg-white rounded shadow p-4">
+				<div class="mb-4">
+					<label for="num1" class="block mb-2">Number 1:</label>
+					<input
+						type="number"
+						id="num1"
+						name="num1"
+						required
+						class="w-full px-3 py-2 border rounded"
+					/>
+				</div>
+				<div class="mb-4">
+					<label for="num2" class="block mb-2">Number 2:</label>
+					<input
+						type="number"
+						id="num2"
+						name="num2"
+						required
+						class="w-full px-3 py-2 border rounded"
+					/>
+				</div>
+				<div class="mb-4">
+					<label for="operation" class="block mb-2">Operation:</label>
+					<select id="operation" name="operation" required class="w-full px-3 py-2 border rounded">
+						<option value="add">Addition</option>
+						<option value="subtract">Subtraction</option>
+						<option value="multiply">Multiplication</option>
+						<option value="divide">Division</option>
+					</select>
+				</div>
+				<button type="submit" class="bg-green-500 text-white py-2 px-4 rounded">Calculate</button>
+			</form>
+		</div>
+	</body>
+</html>
