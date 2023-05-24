@@ -43,7 +43,8 @@ class TokenRingServer:
             self.stop()
 
     def handle_client(self, client_socket):
-        while self.running:
+        client_running = True
+        while self.running and client_running:
             ## Receive data from the client
             data = client_socket.recv(BUFFER_SIZE).decode()
 
@@ -58,7 +59,7 @@ class TokenRingServer:
                 self.clients.remove(client_socket)
                 client_socket.close()
                 data = TOKEN
-                break
+                client_running = False
 
             ## If the client sends TOKEN, send it to the next client
             if data == TOKEN:
