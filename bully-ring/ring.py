@@ -49,6 +49,7 @@ class Ring:
 
         self.active_processes.add(process_id)
         print(f"Process {process_id} is up.")
+        self.start_election(process_id)
 
     def bring_down_process(self, process_id):
         if process_id not in self.active_processes:
@@ -59,7 +60,10 @@ class Ring:
         print(f"Process {process_id} is now down.")
 
         if self.coordinator == process_id:
-            self.start_election(process_id)
+            import random
+
+            index = random.randint(0, len(self.active_processes) - 1)
+            self.start_election(list(self.active_processes)[index])
 
     def print_active_processes(self):
         print("Active processes:")

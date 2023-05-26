@@ -8,7 +8,8 @@ PORT = 5000
 
 
 def get_local_time():
-    return random.randint(int(time.time() - 1e5), int(time.time() + 1e5))
+    current_time = int(time.time())
+    return random.randint(int(current_time - 1e5), int(current_time + 1e5))
 
 
 def main():

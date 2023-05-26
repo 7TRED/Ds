@@ -2,7 +2,9 @@ class Bully:
     def __init__(self, num_process=5):
         # Initialize the Bully object with the number of processes and their states
         self.num_process = num_process
-        self.state = [True for _ in range(num_process)]
+        self.state = [
+            True for _ in range(num_process)
+        ]  ## [True, True, True, False, True]
         self.leader = num_process
 
     def election(self, process_id):
@@ -41,8 +43,12 @@ class Bully:
             print(f"Process {process_id} is now down")
 
             if self.leader == process_id:
+                self.leader = None
                 # If the leader is down, randomly select a new active process and trigger an election
-                active = [i for i, _ in enumerate(self.state) if i]
+                active = []
+                for i, s in enumerate(self.state):
+                    if s:
+                        active.append(i)
                 import random
 
                 index = random.randint(0, len(active) - 1)

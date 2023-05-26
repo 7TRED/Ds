@@ -1,6 +1,9 @@
+## Task-1 import
+
 import socket
 import threading
 
+## Initialization
 TOKEN = "TOKEN"
 PORT = 8080
 BUFFER_SIZE = 1024
@@ -8,12 +11,14 @@ BUFFER_SIZE = 1024
 
 class TokenRingServer:
     def __init__(self):
+        ## Object variables
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.clients = []
         self.client_threads = []
         self.running = False
 
     def start(self):
+        ## Starting the server_socket
         self.server_socket.bind(("localhost", PORT))
         self.server_socket.listen()
         self.running = True
@@ -23,6 +28,7 @@ class TokenRingServer:
             while self.running:
                 ## Accept new connections
                 client_socket, client_address = self.server_socket.accept()
+
                 print(f"New client connected: {client_address}")
                 self.clients.append(client_socket)
 
